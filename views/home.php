@@ -92,6 +92,7 @@ $areaConocida = $_POST['areaConocida'] ?? '';
         <div class="datos">
             <div class="titulo">
                 <h1>Cálculo del área y perímetro del triángulo</h1>
+                <div class="triangle-illustration" aria-hidden="true"></div>
                 <p>Usuario activo: <strong><?php echo htmlspecialchars($_SESSION['usuario']); ?></strong></p>
             </div>
 

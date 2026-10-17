@@ -1,19 +1,19 @@
 /*======================*/
-/*   Login - Pastel     */
+/*   Login - Geometría  */
 /*======================*/
 :root{
-    --fondo: #f7f3ea;
-    --fondo-2: #eef7f2;
-    --tarjeta: #fffaf3;
-    --primario: #b8a7e6;
-    --primario-oscuro: #826fc0;
-    --secundario: #bdebd6;
-    --acento: #ffd6ba;
-    --texto: #3f3d56;
-    --texto-suave: #6f6a80;
-    --borde: #e3d8f2;
+    --fondo: #f1f5ff;
+    --fondo-2: #eaf1ff;
+    --tarjeta: #ffffff;
+    --primario: #465bdb;
+    --primario-oscuro: #2939a8;
+    --secundario: #c7f2e5;
+    --acento: #ffd9b8;
+    --texto: #1d2949;
+    --texto-suave: #65718b;
+    --borde: #d8e1f5;
     --blanco: #ffffff;
-    --sombra: 0 18px 35px rgba(63, 61, 86, 0.14);
+    --sombra: 0 18px 38px rgba(38, 55, 112, 0.12);
 }
 
 *{
@@ -24,11 +24,11 @@
 
 body{
     min-height: 100vh;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--texto);
     background:
-        radial-gradient(circle at top left, rgba(184, 167, 230, 0.35), transparent 32%),
-        radial-gradient(circle at bottom right, rgba(189, 235, 214, 0.45), transparent 35%),
+        radial-gradient(circle at 8% 4%, rgba(70, 91, 219, 0.13), transparent 30%),
+        radial-gradient(circle at 92% 70%, rgba(39, 142, 120, 0.12), transparent 34%),
         var(--fondo);
 }
 
@@ -50,14 +50,14 @@ body{
     padding: 35px 30px;
     border: 1px solid var(--borde);
     border-radius: 28px;
-    background: rgba(255, 250, 243, 0.92);
+    background: rgba(255, 255, 255, 0.96);
     box-shadow: var(--sombra);
 }
 
 form img{
     width: 165px;
     margin-bottom: 25px;
-    filter: drop-shadow(0 8px 12px rgba(63, 61, 86, 0.10));
+    filter: drop-shadow(0 8px 12px rgba(38, 55, 112, 0.12));
 }
 
 form input{
@@ -97,9 +97,23 @@ form button{
     transition: 0.25s ease;
 }
 
+form button:focus-visible,
+form input:focus-visible{
+    outline: 3px solid #c7774e;
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce){
+    *,
+    *::before,
+    *::after{
+        transition-duration: 0.01ms !important;
+    }
+}
+
 form button:hover{
     transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(130, 111, 192, 0.25);
+    box-shadow: 0 10px 20px rgba(41, 57, 168, 0.22);
 }
 
 form button:active{

@@ -2,22 +2,22 @@
 /*   Home - Pastel      */
 /*======================*/
 :root{
-    --fondo: #f7f3ea;
-    --fondo-2: #eef7f2;
-    --tarjeta: #fffaf3;
-    --primario: #b8a7e6;
-    --primario-oscuro: #826fc0;
-    --secundario: #bdebd6;
-    --secundario-oscuro: #78b89c;
-    --acento: #ffd6ba;
-    --acento-oscuro: #dd9a70;
-    --texto: #3f3d56;
-    --texto-suave: #6f6a80;
-    --borde: #e3d8f2;
-    --linea: #eee4d5;
+    --fondo: #f1f5ff;
+    --fondo-2: #eaf1ff;
+    --tarjeta: #ffffff;
+    --primario: #465bdb;
+    --primario-oscuro: #2939a8;
+    --secundario: #c7f2e5;
+    --secundario-oscuro: #278e78;
+    --acento: #ffd9b8;
+    --acento-oscuro: #c7774e;
+    --texto: #1d2949;
+    --texto-suave: #65718b;
+    --borde: #d8e1f5;
+    --linea: #e6ebf5;
     --blanco: #ffffff;
-    --peligro: #ef9a9a;
-    --sombra: 0 16px 32px rgba(63, 61, 86, 0.12);
+    --peligro: #f2aaaa;
+    --sombra: 0 18px 38px rgba(38, 55, 112, 0.12);
 }
 
 *{
@@ -28,11 +28,11 @@
 
 body{
     min-height: 100vh;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--texto);
     background:
-        radial-gradient(circle at top left, rgba(184, 167, 230, 0.35), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(189, 235, 214, 0.45), transparent 35%),
+        radial-gradient(circle at 8% 4%, rgba(70, 91, 219, 0.13), transparent 28%),
+        radial-gradient(circle at 92% 68%, rgba(39, 142, 120, 0.12), transparent 34%),
         var(--fondo);
 }
 
@@ -42,9 +42,9 @@ body{
 .headeerHome{
     width: 100%;
     min-height: 130px;
-    background: rgba(255, 250, 243, 0.92);
+    background: rgba(255, 255, 255, 0.94);
     border-bottom: 1px solid var(--linea);
-    box-shadow: 0 10px 25px rgba(63, 61, 86, 0.08);
+    box-shadow: 0 10px 25px rgba(38, 55, 112, 0.07);
 }
 
 .lineaSup{
@@ -135,12 +135,16 @@ header .buscarHeader{
 }
 
 .lineaInf{
-    background: linear-gradient(90deg, var(--secundario), var(--acento));
+    background: linear-gradient(90deg, #e5edff, #d9f4ec);
     width: 100%;
     min-height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.lineaInf nav{
+    width: 100%;
 }
 
 .menu{
@@ -187,7 +191,7 @@ main{
 .buscar,
 .tabla{
     width: min(1100px, 90%);
-    background-color: rgba(255, 250, 243, 0.95);
+    background-color: rgba(255, 255, 255, 0.96);
     border: 1px solid var(--borde);
     border-radius: 24px;
     box-shadow: var(--sombra);
@@ -220,6 +224,25 @@ main{
     color: var(--texto-suave);
     font-size: 18px;
     margin-top: 5px;
+}
+
+.triangle-illustration{
+    width: 76px;
+    height: 66px;
+    margin: 8px 0 4px;
+    background: linear-gradient(145deg, #7d8df5, var(--primario-oscuro));
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    filter: drop-shadow(0 8px 10px rgba(41, 57, 168, 0.22));
+    position: relative;
+}
+
+.triangle-illustration::after{
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    height: 67%;
+    border-left: 2px dashed rgba(255, 255, 255, 0.85);
 }
 
 .datos .form2{
@@ -379,6 +402,15 @@ main{
     font-size: clamp(24px, 4vw, 32px);
     text-align: center;
     margin-bottom: 16px;
+}
+
+.menu a:focus-visible,
+button:focus-visible,
+.btn-link:focus-visible,
+.btn-tabla:focus-visible,
+input:focus-visible{
+    outline: 3px solid var(--acento-oscuro);
+    outline-offset: 3px;
 }
 
 .visually-hidden{
@@ -563,6 +595,15 @@ table tbody tr:hover{
     .logo-links{
         flex-direction: column;
         gap: 8px;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+        *,
+        *::before,
+        *::after{
+            scroll-behavior: auto !important;
+            transition-duration: 0.01ms !important;
+        }
     }
 
     .buscarHeader,
