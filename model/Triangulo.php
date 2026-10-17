@@ -5,6 +5,15 @@ class Triangulo
 {
     private PDO $pdo;
 
+    public static function calcularAltura(float $base, float $area): float
+    {
+        if (!is_finite($base) || !is_finite($area) || $base <= 0 || $area <= 0) {
+            throw new InvalidArgumentException('La base y el área deben ser mayores que cero.');
+        }
+
+        return (2 * $area) / $base;
+    }
+
     public function __construct()
     {
         $database = new Database();

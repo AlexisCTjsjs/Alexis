@@ -18,6 +18,10 @@ class TrianguloController
 
         $accion = $_POST['accion'] ?? '';
 
+        if ($accion === 'calcular_altura') {
+            return $this->calcularAltura();
+        }
+
         if ($accion === 'guardar') {
             return $this->guardarOActualizar();
         }
@@ -27,6 +31,26 @@ class TrianguloController
         }
 
         return '';
+    }
+
+    private function calcularAltura(): string
+    {
+        $base = trim($_POST['baseCalculoAltura'] ?? '');
+        $area = trim($_POST['areaConocida'] ?? '');
+
+        if (!is_numeric($base) || !is_numeric($area)) {
+            return 'Ingrese una base y un área válidas para encontrar la altura.';
+        }
+
+        $base = (float) $base;
+        $area = (float) $area;
+
+        if (!is_finite($base) || !is_finite($area) || $base <= 0 || $area <= 0) {
+            return 'La base y el área deben ser mayores que cero.';
+        }
+
+        $altura = Triangulo::calcularAltura($base, $area);
+        return 'La altura del triángulo es ' . number_format($altura, 2, '.', '') . '.';
     }
 
     private function guardarOActualizar(): string

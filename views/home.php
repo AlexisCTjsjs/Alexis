@@ -33,6 +33,8 @@ $lado3Actual = $registroEditar['lado3'] ?? '';
 $detalleActual = $registroEditar['detalle'] ?? '';
 $areaActual = $registroEditar['area'] ?? '';
 $perimetroActual = $registroEditar['perimetro'] ?? '';
+$baseCalculoAltura = $_POST['baseCalculoAltura'] ?? '';
+$areaConocida = $_POST['areaConocida'] ?? '';
 ?>
 
 <!DOCTYPE html>
@@ -164,6 +166,31 @@ $perimetroActual = $registroEditar['perimetro'] ?? '';
                 </div>
             </form>
         </div>
+
+        <section class="datos calculadora-altura">
+            <div class="titulo">
+                <h2>Encontrar una altura</h2>
+                <p>Ingresa la base y el área conocida para calcular la altura: h = (2 × área) / base.</p>
+            </div>
+            <form action="" method="post" class="form2">
+                <input type="hidden" name="accion" value="calcular_altura">
+                <div class="form-grid">
+                    <div class="inputs">
+                        <label for="baseCalculoAltura">Base (b)</label>
+                        <input class="inputHome" type="number" step="any" min="0.01" name="baseCalculoAltura"
+                            id="baseCalculoAltura" required value="<?php echo htmlspecialchars((string) $baseCalculoAltura); ?>">
+                    </div>
+                    <div class="inputs">
+                        <label for="areaConocida">Área (A)</label>
+                        <input class="inputHome" type="number" step="any" min="0.01" name="areaConocida"
+                            id="areaConocida" required value="<?php echo htmlspecialchars((string) $areaConocida); ?>">
+                    </div>
+                </div>
+                <div class="botones">
+                    <button type="submit">Calcular altura</button>
+                </div>
+            </form>
+        </section>
 
         <div class="buscar">
             <form action="home.php" method="get" id="frmBuscar">
