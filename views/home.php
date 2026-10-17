@@ -72,9 +72,10 @@ $areaConocida = $_POST['areaConocida'] ?? '';
             </div>
         </div>
         <div class="lineaInf">
-            <nav class="menu">
+            <nav aria-label="Navegación principal">
+                <ul class="menu">
                 <li>
-                    <a href="home.php">Inicio</a>
+                    <a href="home.php" aria-current="page">Inicio</a>
                 </li>
                 <li>
                     <a href="#">Nuestra historia</a>
@@ -82,6 +83,7 @@ $areaConocida = $_POST['areaConocida'] ?? '';
                 <li>
                     <a href="logout.php" onclick="return confirm('¿Desea salir del sistema?');">Cerrar sesión</a>
                 </li>
+                </ul>
             </nav>
         </div>
     </header>
@@ -99,7 +101,7 @@ $areaConocida = $_POST['areaConocida'] ?? '';
             </div>
 
             <?php if ($mensaje !== '') : ?>
-                <p class="mensaje">
+                <p class="mensaje" role="status" aria-live="polite">
                     <?php echo htmlspecialchars(ucfirst($mensaje)); ?>
                 </p>
             <?php endif; ?>
@@ -203,21 +205,22 @@ $areaConocida = $_POST['areaConocida'] ?? '';
         </div>
 
         <div class="tabla">
-            <h1>Historial de Cálculos del Triángulo</h1>
+            <h2>Historial de Cálculos del Triángulo</h2>
             <table>
+                <caption class="visually-hidden">Historial de medidas y cálculos de triángulos</caption>
                 <thead>
                     <tr>
-                        <th>ID</th>
-                        <th>Base</th>
-                        <th>Altura</th>
-                        <th>Lado 1</th>
-                        <th>Lado 2</th>
-                        <th>Lado 3</th>
-                        <th>Detalle</th>
-                        <th>Área</th>
-                        <th>Perímetro</th>
-                        <th>Fecha y hora</th>
-                        <th>Acciones</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Base</th>
+                        <th scope="col">Altura</th>
+                        <th scope="col">Lado 1</th>
+                        <th scope="col">Lado 2</th>
+                        <th scope="col">Lado 3</th>
+                        <th scope="col">Detalle</th>
+                        <th scope="col">Área</th>
+                        <th scope="col">Perímetro</th>
+                        <th scope="col">Fecha y hora</th>
+                        <th scope="col">Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
