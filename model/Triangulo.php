@@ -14,6 +14,19 @@ class Triangulo
         return (2 * $area) / $base;
     }
 
+    public static function esTrianguloValido(float $lado1, float $lado2, float $lado3): bool
+    {
+        if (!is_finite($lado1) || !is_finite($lado2) || !is_finite($lado3) ||
+            $lado1 <= 0 || $lado2 <= 0 || $lado3 <= 0 ||
+            !is_finite($lado1 + $lado2 + $lado3)) {
+            return false;
+        }
+
+        return $lado1 + $lado2 > $lado3 &&
+            $lado1 + $lado3 > $lado2 &&
+            $lado2 + $lado3 > $lado1;
+    }
+
     public function __construct()
     {
         $database = new Database();

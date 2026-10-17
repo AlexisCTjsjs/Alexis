@@ -34,8 +34,14 @@ function calcularTriangulo() {
         areaInput.value = '';
     }
 
-    // Cálculo del Perímetro: lado1 + lado2 + lado3
-    if (!isNaN(lado1) && lado1 > 0 && !isNaN(lado2) && lado2 > 0 && !isNaN(lado3) && lado3 > 0) {
+    // El perímetro solo corresponde a un triángulo si se cumple la desigualdad triangular.
+    const ladosPositivos = lado1 > 0 && lado2 > 0 && lado3 > 0;
+    const trianguloValido = ladosPositivos &&
+        lado1 + lado2 > lado3 &&
+        lado1 + lado3 > lado2 &&
+        lado2 + lado3 > lado1;
+
+    if (trianguloValido) {
         const perimetro = lado1 + lado2 + lado3;
         perimetroInput.value = perimetro.toFixed(2);
         calculoRealizado = true;
@@ -100,6 +106,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 return;
             }
 
+            if (!esTrianguloValido(lado1, lado2, lado3)) {
+                alert('Las longitudes ingresadas no forman un triángulo válido.');
+                return;
+            }
+
             calcularTriangulo();
         });
     }
@@ -107,3 +118,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // Calcular valores iniciales si estamos en modo edición
     calcularTriangulo();
 });
+
+function esTrianguloValido(lado1, lado2, lado3) {
+    return lado1 + lado2 > lado3 &&
+        lado1 + lado3 > lado2 &&
+        lado2 + lado3 > lado1;
+}

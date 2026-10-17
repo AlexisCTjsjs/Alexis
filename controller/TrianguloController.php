@@ -88,6 +88,19 @@ class TrianguloController
         $l2 = (float) $lado2;
         $l3 = (float) $lado3;
 
+        if (!is_finite($b) || !is_finite($h) || !is_finite($l1) ||
+            !is_finite($l2) || !is_finite($l3)) {
+            return 'Las medidas deben ser números finitos.';
+        }
+
+        if (!Triangulo::esTrianguloValido($l1, $l2, $l3)) {
+            return 'Las longitudes de los lados no forman un triángulo válido.';
+        }
+
+        if (!is_finite(($b * $h) / 2) || !is_finite($l1 + $l2 + $l3)) {
+            return 'Las medidas son demasiado grandes para calcular el área y el perímetro.';
+        }
+
         if ($id > 0) {
             $this->modelo->actualizar($id, $detalle, $b, $h, $l1, $l2, $l3);
             header('Location: home.php?mensaje=actualizado');

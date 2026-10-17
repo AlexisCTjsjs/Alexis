@@ -10,6 +10,9 @@ function comprobar(bool $condicion, string $mensaje): void
 }
 
 comprobar(abs(Triangulo::calcularAltura(10, 25) - 5) < 0.000001, 'Debe calcular la altura usando base y área.');
+comprobar(Triangulo::esTrianguloValido(3, 4, 5), 'Debe aceptar un triángulo válido.');
+comprobar(!Triangulo::esTrianguloValido(1, 2, 3), 'Debe rechazar lados que no forman un triángulo.');
+comprobar(!Triangulo::esTrianguloValido(1, 0, 1), 'Debe rechazar lados que no sean positivos.');
 
 try {
     Triangulo::calcularAltura(0, 25);
