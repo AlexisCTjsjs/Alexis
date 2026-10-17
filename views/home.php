@@ -160,12 +160,13 @@ $areaConocida = $_POST['areaConocida'] ?? '';
                 </div>
 
                 <div class="botones">
-                    <button type="button" id="btnCalcular" onclick="calcularTriangulo();">Calcular</button>
+                    <button type="button" id="btnCalcular">Calcular</button>
                     <a class="btn-link cancelar" href="home.php">Cancelar</a>
                     <button type="submit" name="accion" value="guardar">
                         <?php echo $idActual !== '' ? 'Actualizar' : 'Guardar'; ?>
                     </button>
                 </div>
+                <p id="estadoCalculo" class="visually-hidden" role="status" aria-live="polite"></p>
             </form>
         </div>
 

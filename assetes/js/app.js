@@ -83,35 +83,46 @@ document.addEventListener('DOMContentLoaded', function () {
             const lado2Input = document.getElementById('txtLado2');
             const lado3Input = document.getElementById('txtLado3');
 
-            const base = parseFloat(baseInput?.value);
-            const altura = parseFloat(alturaInput?.value);
-            const lado1 = parseFloat(lado1Input?.value);
-            const lado2 = parseFloat(lado2Input?.value);
-            const lado3 = parseFloat(lado3Input?.value);
-
-            if (isNaN(base) || base <= 0) {
-                alert('Por favor ingrese una base válida mayor a cero.');
-                baseInput?.focus();
-                return;
-            }
-
-            if (isNaN(altura) || altura <= 0) {
-                alert('Por favor ingrese una altura válida mayor a cero.');
-                alturaInput?.focus();
-                return;
-            }
-
-            if (isNaN(lado1) || lado1 <= 0 || isNaN(lado2) || lado2 <= 0 || isNaN(lado3) || lado3 <= 0) {
-                alert('Por favor complete los 3 lados válidos mayores a cero para calcular el perímetro.');
-                return;
-            }
-
-            if (!esTrianguloValido(lado1, lado2, lado3)) {
-                alert('Las longitudes ingresadas no forman un triángulo válido.');
-                return;
-            }
+            const base = parseFloat(baseInput.value);
+            const altura = parseFloat(alturaInput.value);
+            const lado1 = parseFloat(lado1Input.value);
+            const lado2 = parseFloat(lado2Input.value);
+            const lado3 = parseFloat(lado3Input.value);
+            const areaValida = Number.isFinite(base) && base > 0 &&
+                Number.isFinite(altura) && altura > 0;
+            const perimetroValido = esTrianguloValido(lado1, lado2, lado3);
+            const ladosCompletos = [lado1Input, lado2Input, lado3Input]
+                .every(function (input) {
+                    return input.value.trim() !== '';
+                });
 
             calcularTriangulo();
+
+            if (!areaValida && !perimetroValido) {
+                alert('Ingresa una base y altura válidas para el área, o tres lados válidos para el perímetro.');
+                (Number.isFinite(base) && base > 0 ? alturaInput : baseInput).focus();
+                return;
+            }
+
+            if (ladosCompletos && !perimetroValido) {
+                alert('Las longitudes ingresadas no forman un triángulo válido. Se mantiene el cálculo del área.');
+                lado1Input.focus();
+                return;
+            }
+
+            const estadoCalculo = document.getElementById('estadoCalculo');
+            if (estadoCalculo) {
+                const resultados = [];
+                const area = document.getElementById('txtA').value;
+                const perimetro = document.getElementById('txtP').value;
+                if (area !== '') {
+                    resultados.push('Área: ' + area);
+                }
+                if (perimetro !== '') {
+                    resultados.push('Perímetro: ' + perimetro);
+                }
+                estadoCalculo.textContent = resultados.join('. ');
+            }
         });
     }
 
@@ -120,7 +131,10 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function esTrianguloValido(lado1, lado2, lado3) {
-    return lado1 + lado2 > lado3 &&
+    return Number.isFinite(lado1) && Number.isFinite(lado2) && Number.isFinite(lado3) &&
+        lado1 > 0 && lado2 > 0 && lado3 > 0 &&
+        Number.isFinite(lado1 + lado2 + lado3) &&
+        lado1 + lado2 > lado3 &&
         lado1 + lado3 > lado2 &&
         lado2 + lado3 > lado1;
 }
